@@ -12,18 +12,14 @@
         <p><strong>{{ error_message }}</strong></p>
     {% endif %}
 
-    <form action="{% url 'music:favorite' album.id %}" method="post">
-        {% csrf_token %}
+    
         {% for song in album.song_set.all %}
             <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
             <label for="song{{ forloop.counter }}">
                 {{ song.song_title }}
-                {% if song.is_favorite %}
-                    fav<img src="https://cdn2.iconfinder.com/data/icons/crystalproject/crystal_project_256x256/apps/keditbookmarks.png" height="16px" width="16px"/>
-                {% endif %}
             </label><br>
         {% endfor %}
 
-        <input type="submit" value="Favorite">
+        
 {% endblock body %}
     </form>
